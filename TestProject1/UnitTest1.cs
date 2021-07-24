@@ -17,11 +17,11 @@ namespace TestProject1
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void TestMethodForRetrieveTopTwoLessThan601()
+        public void TestMethodForRetrieveTeenageRecords()
         {
             ///AAA Method
-            bool expected = false;
-            var actual = PersonData.RetrieveTopTwoLessThan60(list);
+            bool expected = true;
+            var actual = PersonData.RetrieveTeenageRecords(list);
             Assert.AreEqual(expected, actual);
         }
     }
