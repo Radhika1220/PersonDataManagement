@@ -20,8 +20,8 @@ namespace PersonDataManagement
                 {
                     list.Add(new Person() { SSN = 1, name = "Radhika", address = "Chennai", age = 21 });
                     list.Add(new Person() { SSN = 2, name = "Priya", address = "Bangalore", age = 27 });
-                    list.Add(new Person() { SSN = 3, name = "Arun", address = "Pondicherry", age = 15 });
-                    list.Add(new Person() { SSN = 4, name = "Ajoy", address = "Madurai", age = 14 });
+                    list.Add(new Person() { SSN = 3, name = "Arun", address = "Pondicherry", age = 35 });
+                    list.Add(new Person() { SSN = 4, name = "Ajoy", address = "Madurai", age = 37 });
                     list.Add(new Person() { SSN = 5, name = "Kishore", address = "Hyderabad", age = 41 });
                 }
                 else if (list.Count == 0)
@@ -37,47 +37,57 @@ namespace PersonDataManagement
             }
         }
 
-        public  static bool RetrieveTopTwoLessThan60(List<Person> list)
+        /// <summary>
+        /// UC2-Retrieve Top two records which is less tahn 60
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static bool RetrieveTopTwoLessThan60(List<Person> list)
         {
             Console.WriteLine("\n----------Retrieve top two records in list-----------\n");
             try
             {
-                if (list.Count >= 0)
+                AddPerson(list);
+                if (list.Count > 0)
                 {
                     var ageResult1 = list.FindAll(a => a.age < 60).OrderBy(b => b.age).Take(2).ToList();
                     IterateThroughList(ageResult1);
                     return true;
                 }
-                else if (list.Count<0)
+                else if (list.Count < 0)
                 {
                     Console.WriteLine("No data present in list");
                     return false;
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return false;
             }
             return false;
         }
+        /// <summary>
+        /// UC3-Retrieve teenage records
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static bool RetrieveTeenageRecords(List<Person> list)
         {
             Console.WriteLine("\n----------Retrieve Records which is Age between 13 to 18-----------\n");
             try
             {
+                AddPerson(list);
 
-                if (list.Count >= 0)
+                if (list.Count > 0)
                 {
                     var ageResult2 = list.FindAll(a => a.age > 13 && a.age < 18);
 
-                    if (ageResult2.Count != 0)
-                    {
+                    
                         IterateThroughList(ageResult2);
                         return true;
-                    }
-                    return true;
+      
                 }
                 else
                 {
