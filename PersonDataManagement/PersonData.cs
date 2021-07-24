@@ -36,13 +36,18 @@ namespace PersonDataManagement
                 Console.WriteLine(ex.Message);
             }
         }
-
+        /// <summary>
+        /// UC2-Retrieve Top two records which is less tahn 60
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public  static bool RetrieveTopTwoLessThan60(List<Person> list)
         {
             Console.WriteLine("\n----------Retrieve top two records in list-----------\n");
             try
             {
-                if (list.Count >= 0)
+                AddPerson(list);
+                if (list.Count > 0)
                 {
                     var ageResult1 = list.FindAll(a => a.age < 60).OrderBy(b => b.age).Take(2).ToList();
                     IterateThroughList(ageResult1);
@@ -62,13 +67,19 @@ namespace PersonDataManagement
             }
             return false;
         }
+        /// <summary>
+        /// UC3-Retrieve teenage records
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         public static bool RetrieveTeenageRecords(List<Person> list)
         {
             Console.WriteLine("\n----------Retrieve Records which is Age between 13 to 18-----------\n");
             try
             {
+                AddPerson(list);
 
-                if (list.Count >= 0)
+                if (list.Count > 0)
                 {
                     var ageResult2 = list.FindAll(a => a.age > 13 && a.age < 18);
 
@@ -77,7 +88,7 @@ namespace PersonDataManagement
                         IterateThroughList(ageResult2);
                         return true;
                     }
-                    return true;
+                    return false;
                 }
                 else
                 {
@@ -91,7 +102,34 @@ namespace PersonDataManagement
                 return false;
             }
         }
-        public static void IterateThroughList(List<Person> list)
+        public static bool CalculateAverageAge(List<Person> list)
+        {
+            Console.WriteLine("\n----------Average age in list-----------\n");
+            try
+            {
+                AddPerson(list);
+                if (list.Count > 0)
+                {
+                        double avgAge = list.Average(a => a.age);
+                        Console.WriteLine("Average age value is : {0} ", avgAge);
+                        return true;
+                }
+                else
+                {
+                    Console.WriteLine("No data present in list");
+                    return false;
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+           
+        }
+
+            public static void IterateThroughList(List<Person> list)
         {
             foreach (Person person in list)
             {
