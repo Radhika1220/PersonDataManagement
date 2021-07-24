@@ -16,13 +16,6 @@ namespace TestProject1
             var actual= PersonData.RetrieveTopTwoLessThan60(list);
             Assert.AreEqual(expected, actual);
         }
-        [TestMethod]
-        public void TestMethodForRetrieveTopTwoLessThan601()
-        {
-            ///AAA Method
-            bool expected = false;
-            var actual = PersonData.RetrieveTopTwoLessThan60(list);
-            Assert.AreEqual(expected, actual);
-        }
+   
     }
 }

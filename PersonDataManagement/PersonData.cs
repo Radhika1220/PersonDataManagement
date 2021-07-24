@@ -37,25 +37,31 @@ namespace PersonDataManagement
             }
         }
 
-        public  static bool RetrieveTopTwoLessThan60(List<Person> list)
+        /// <summary>
+        /// UC2-Retrieve Top two records which is less tahn 60
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static bool RetrieveTopTwoLessThan60(List<Person> list)
         {
             Console.WriteLine("\n----------Retrieve top two records in list-----------\n");
             try
             {
-                if (list.Count >= 0)
+                AddPerson(list);
+                if (list.Count > 0)
                 {
                     var ageResult1 = list.FindAll(a => a.age < 60).OrderBy(b => b.age).Take(2).ToList();
                     IterateThroughList(ageResult1);
                     return true;
                 }
-                else if (list.Count<0)
+                else if (list.Count < 0)
                 {
                     Console.WriteLine("No data present in list");
                     return false;
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return false;
