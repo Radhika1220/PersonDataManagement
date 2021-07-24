@@ -128,6 +128,12 @@ namespace PersonDataManagement
             }
            
         }
+        /// <summary>
+        /// UC5-Searching specific name in list
+        /// </summary>
+        /// <param name="list"></param>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         public static bool SearchingSpecificName(List<Person> list, string Name)
         {
             try
@@ -141,6 +147,35 @@ namespace PersonDataManagement
                     return true;
                 }
                 return false;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+        /// <summary>
+        /// UC6-Skip record which less than 60
+        /// </summary>
+        /// <param name="list"></param>
+        public static bool SkipRecordLessThan60(List<Person> list)
+        {
+            try
+            {
+                AddPerson(list);
+                var skipRecord = list.FindAll(a => a.age > 60);
+                if (skipRecord != null)
+                {
+                    Console.WriteLine("\n-----Record which age is greater than 60-----");
+                    IterateThroughList(skipRecord);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("No data available ");
+                    return false;
+                }
+
             }
             catch(Exception ex)
             {

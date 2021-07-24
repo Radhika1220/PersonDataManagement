@@ -14,7 +14,8 @@ namespace PersonDataManagement
             Console.WriteLine("Enter 2. Retrieve top two records which age is less than 60");
             Console.WriteLine("Enter 3. Retrieve Records which is Age between 13 to 18");
             Console.WriteLine("Enter 4. Calculating average age");
-            Console.WriteLine("Enter 5.Search Specific name in list");
+            Console.WriteLine("Enter 5. Search Specific name in list");
+            Console.WriteLine("Enter 6. Skip record which less than 60 ");
             Console.WriteLine("Enter the option");
             int option = Convert.ToInt32(Console.ReadLine());
             switch(option)
@@ -36,6 +37,9 @@ namespace PersonDataManagement
                     break;
                 case 5:
                     PersonData.SearchingSpecificName(list,"Arun");
+                    break;
+                case 6:
+                    PersonData.SkipRecordLessThan60(list);
                     break;
                 default:
                     Console.WriteLine("Enter valid option");
